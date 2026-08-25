@@ -87,7 +87,7 @@ def inicializar_base_datos():
         ])
 
         # ------------------------------------------------------------------
-        # EVENTOS DE PRUEBA (demuestra polimorfismo STI)
+        # EVENTOS DE PRUEBA 
         # ------------------------------------------------------------------
         e1 = EventoConcierto(
             codigo="CON001", nombre="Noche de Rock Nacional",
