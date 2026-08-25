@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ producto.nombre }} — Detalle{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{{ url_for('inicio') }}" class="btn btn-outline-secondary btn-sm">
+        &larr; Volver al catálogo
+    </a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-primary fs-6 text-capitalize">{{ producto.tipo }}</span>
+                    <span class="text-muted small">Código interno: {{ producto.codigo }}</span>
+                </div>
+
+                <h1 class="h2 fw-bold text-dark mb-3">{{ producto.nombre }}</h1>
+                
+                <div class="p-3 bg-light rounded-3 mb-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted d-block small">Precio Unitario</span>
+                        <span class="fs-2 fw-bold text-success">${{ "%.2f"|format(producto.precio_final()) }}</span>
+                    </div>
+                    <div class="text-end">
+                        <span class="text-muted d-block small">Disponibilidad</span>
+                        <span class="badge bg-secondary fs-6">{{ producto.stock }} unidades</span>
+                    </div>
+                </div>
+
+                <!-- Detalle Específico según Jerarquía de Objetos POO -->
+                <h5 class="fw-bold mb-3 border-bottom pb-2">Especificaciones Técnicas</h5>
+                
+                {% if producto.tipo == "fisico" %}
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-box-seam me-2"></i>Peso del paquete:</span>
+                            <strong>{{ producto.peso_kg }} kg</strong>
+                        </li>
+                    </ul>
+                {% elif producto.tipo == "digital" %}
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-key me-2"></i>Tipo de Licencia:</span>
+                            <strong class="text-capitalize">{{ producto.licencia }}</strong>
+                        </li>
+                    </ul>
+                {% elif producto.tipo == "perecible" %}
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-calendar-event me-2"></i>Días para vencimiento:</span>
+                            <strong>{{ producto.dias_para_vencer }} días</strong>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                <!-- Formulario Botón Añadir al Carrito -->
+                <form action="#" method="POST" class="mt-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="cantidad" class="col-form-label fw-bold">Cantidad:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="cantidad" name="cantidad" class="form-control" value="1" min="1" max="{{ producto.stock }}">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary w-100">
+                                Añadir al Carrito 🛒
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% extends "base.html" %}
+
+{% block titulo %}Detalle del Producto{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <h2>{{ producto.nombre }}</h2>
+        <p class="text-muted">{{ producto.descripcion }}</p>
+        <p><strong>Precio:</strong> ${{ "%.2f"|format(producto.precio_base) }}</p>
+
+        {% if session.get('es_admin') %}
+        <hr>
+        <div class="d-flex gap-2">
+            <a href="{{ url_for('editar_mercancia', id_mercancia=producto.id_mercancia) }}"
+               class="btn btn-outline-primary">
+                ✏️ Editar
+            </a>
+            <form action="{{ url_for('eliminar_mercancia', id_mercancia=producto.id_mercancia) }}"
+                  method="POST"
+                  onsubmit="return confirm('¿Seguro que quieres desactivar esta mercancía?');">
+                <button type="submit" class="btn btn-outline-danger">
+                    🗑️ Desactivar
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

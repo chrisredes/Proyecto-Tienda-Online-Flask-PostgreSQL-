@@ -1,0 +1,167 @@
+:root {
+  /* =========================================
+     COLOR TOKENS
+     ========================================= */
+  --color-primary: #7C3AED;
+  --color-primary-strong: #6D28D9;
+  --color-primary-soft: #EDE9FE;
+
+  --color-secondary: #51A2FF;
+  --color-secondary-strong: #2E7AE6;
+  --color-secondary-soft: #EAF4FF;
+
+  --color-accent-warning: #FFB300;
+  --color-accent-warning-strong: #D99000;
+  --color-accent-warning-soft: #FFF4D6;
+
+  --color-accent-success: #7CB342;
+  --color-accent-success-strong: #5E8F2D;
+  --color-accent-success-soft: #EEF9E7;
+
+  --color-accent-danger: #EF4444;
+  --color-accent-danger-strong: #C92A2A;
+  --color-accent-danger-soft: #FDECEC;
+
+  --color-bg-primary: #F9FAFB;
+  --color-bg-secondary: #F3F4F6;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-muted: #EEF2F7;
+  --color-bg-dark: #0A0A0E;
+  --color-bg-dark-card: #12121A;
+
+  --color-text-main: #111827;
+  --color-text-body: #1F2937;
+  --color-text-muted: #6B7280;
+  --color-text-soft: #9CA3AF;
+  --color-text-inverse: #F9FAFB;
+  --color-text-on-primary: #FFFFFF;
+
+  --color-border-light: #E5E7EB;
+  --color-border-strong: #D1D5DB;
+  --color-border-overlay: rgba(255, 255, 255, 0.05);
+  --color-border-dark: rgba(255, 255, 255, 0.08);
+
+  --color-shadow: rgba(15, 23, 42, 0.12);
+  --color-shadow-soft: rgba(15, 23, 42, 0.06);
+
+  /* =========================================
+     TYPOGRAPHY TOKENS
+     ========================================= */
+  --font-family-heading: "Montserrat", "Segoe UI", sans-serif;
+  --font-family-body: "Inter", "Segoe UI", sans-serif;
+  --font-family-sans: "Inter", "Segoe UI", sans-serif;
+
+  --font-h1: 700 40px/1.1 -0.02em "Montserrat", "Segoe UI", sans-serif;
+  --font-h2: 600 24px/1.3 0 "Montserrat", "Segoe UI", sans-serif;
+  --font-h3: 600 20px/1.4 0 "Montserrat", "Segoe UI", sans-serif;
+  --font-body-lg: 400 18px/1.6 0 "Inter", "Segoe UI", sans-serif;
+  --font-body-md: 400 15px/1.6 0 "Inter", "Segoe UI", sans-serif;
+  --font-body-sm: 400 13px/1.5 0.01em "Inter", "Segoe UI", sans-serif;
+  --font-label: 500 12px/1.4 0.04em "Inter", "Segoe UI", sans-serif;
+  --font-button: 600 15px/1.2 0 "Inter", "Segoe UI", sans-serif;
+  --font-tag: 500 11px/1.2 0.03em "Inter", "Segoe UI", sans-serif;
+
+  /* =========================================
+     SPACE TOKENS
+     ========================================= */
+  --space-0: 0px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* =========================================
+     BORDER RADIUS / SHADOW TOKENS
+     ========================================= */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 20px rgba(124, 58, 237, 0.12);
+  --shadow-card: 0 12px 24px rgba(15, 23, 42, 0.08);
+  --shadow-focus: 0 0 0 3px rgba(124, 58, 237, 0.18);
+
+  /* =========================================
+     LAYOUT / BREAKPOINTS
+     ========================================= */
+  --container-max-width: 1440px;
+  --container-padding: 95px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* =========================================
+     BASE UI RESOLUTIONS
+     ========================================= */
+  --input-height: 41px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-body);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

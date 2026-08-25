@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar {{ mercancia.nombre }} | TicketNow{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{{ url_for('detalle_mercancia', id_mercancia=mercancia.id_mercancia) }}" class="btn btn-outline-secondary mb-3">
+            ← Cancelar
+        </a>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="mb-1 fw-bold">✏️ Editar Mercancía</h2>
+                <p class="text-muted mb-4">
+                    Código: <span class="badge bg-secondary">{{ mercancia.codigo }}</span> (no editable)
+                </p>
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nombre del Producto</label>
+                        <input type="text" class="form-control" name="nombre" value="{{ mercancia.nombre }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Descripción</label>
+                        <textarea class="form-control" name="descripcion" rows="3">{{ mercancia.descripcion or '' }}</textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Precio Base ($)</label>
+                            <input type="number" step="0.01" class="form-control" name="precio_base" value="{{ mercancia.precio_base }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Stock Disponible</label>
+                            <input type="number" class="form-control" name="stock" value="{{ mercancia.stock }}" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info border-0 bg-light text-secondary">
+                        ℹ️ <strong>Nota:</strong> Los cambios realizados actualizarán inmediatamente el inventario en la tienda.
+                    </div>
+
+                    <button type="submit" class="btn btn-warning w-100 fw-bold">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

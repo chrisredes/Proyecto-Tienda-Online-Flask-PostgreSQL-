@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block titulo %}Nuevo Evento | TicketNow{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{{ url_for('listar_eventos') }}" class="btn btn-outline-secondary mb-3">← Volver al inicio</a>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="mb-4 fw-bold">🎟️ Registrar Nuevo Evento</h2>
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nombre del Evento</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Ej. Concierto de Rock" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Lugar</label>
+                        <input type="text" class="form-control" name="lugar" placeholder="Ej. Estadio Olímpico" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Fecha y Hora</label>
+                            <input type="datetime-local" class="form-control" name="fecha" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Precio Entradas ($)</label>
+                            <input type="number" step="0.01" class="form-control" name="precio" placeholder="45.00" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Guardar Evento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
