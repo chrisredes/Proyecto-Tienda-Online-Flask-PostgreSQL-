@@ -35,7 +35,7 @@ class Usuario(db.Model):
     carrito = db.relationship("Carrito", backref="usuario", uselist=False)
     compras = db.relationship("Compra", backref="usuario", lazy=True)
 
-    # --- Encapsulamiento: la contraseña nunca se guarda en texto plano ---
+    # --- no ---
     def set_password(self, password: str) -> None:
         """Genera y almacena el hash seguro de la contraseña."""
         self.password_hash = generate_password_hash(password)
@@ -134,7 +134,7 @@ class Evento(db.Model):
     equipo_visitante = db.Column(db.String(100), nullable=True) # Deportivo
     recargo_fijo = db.Column(db.Numeric(6, 2), nullable=True)   # Deportivo
 
-    # Discriminador para STI
+    # 
     tipo = db.Column(db.String(30))
     __mapper_args__ = {
         "polymorphic_identity": "evento",
