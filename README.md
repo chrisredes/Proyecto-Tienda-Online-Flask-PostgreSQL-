@@ -129,4 +129,4 @@ Abre tu navegador e ingresa a:
 
 ## ✒️ Autor
 
-- **Chrtian Perez** - [*chrisredes*](https://github.com/chrisredes)
+- **Christian Perez** - [*chrisredes*](https://github.com/chrisredes)
